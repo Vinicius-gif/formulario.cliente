@@ -1,0 +1,30 @@
+<html>
+
+<body>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+
+  <form action="/action_page.php">
+    <h1>Formulário Cliente</h1>
+    <div class="formcontainer">
+      <div class="container">
+        <label for="nome"><strong>Nome Completo</strong> </label><br> 
+        <input type="text" name="nome" [(ngModel)]="cliente.Nome">
+        <label for="cpf"><strong>CPF</strong> </label><br>
+        <input type="text" name="cpf" [(ngModel)]="cliente.CPF">
+        <label for="cep"><strong>CEP</strong> </label><br>
+        <input type="text" name="cep" [(ngModel)]="cliente.CEP" (blur)="VerificaCEP()">
+        <label for="rua"><strong>Rua</strong> </label><br>
+        <input type="text" name="rua" [(ngModel)]="cliente.Rua">
+        <label for="bairro"><strong>Bairro</strong> </label><br>
+        <input type="text" name="bairro" [(ngModel)]="cliente.Bairro">
+        <label for="municipio"><strong>Municipio</strong> </label><br>
+        <input type="text" name="municipio" [(ngModel)]="cliente.Municipio">
+        <label for="estado"><strong>Estado</strong> </label><br>
+        <input type="text" name="estado" [(ngModel)]="cliente.Estado">
+        <div id="cpf" *ngIf="!cliente.CPFValido()"> <strong>CPF Inválido</strong></div><br>
+      </div>
+    </div>
+    <div> <input id="botao" type="button" (click)="salvar()" value="Salvar" [disabled]="!cliente.CPFValido()" />
+    </div>
